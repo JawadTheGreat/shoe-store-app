@@ -1,0 +1,61 @@
+/* nav component */
+
+.main-nav {
+  background-color: #191919;
+  padding: 1.5em;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+  padding: 1em;
+  border-radius: 0.5em;
+  width: 30vw;
+}
+.search-input {
+  background-color: transparent;
+  border: none;
+  width: 85%;
+  height: 1.8em;
+}
+
+.search-input:focus {
+  outline: none;
+}
+.search-input::placeholder {
+  color: lightgray;
+  font-size: 1.1em;
+}
+.search-icon {
+  width: 1.5em;
+  cursor: pointer;
+}
+
+.nav-offer {
+  color: #e8e8e8;
+  font-size: 1.7em;
+  cursor: pointer;
+}
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+.nav-item {
+  color: lightgray;
+  margin-right: 4em;
+  cursor: pointer;
+}

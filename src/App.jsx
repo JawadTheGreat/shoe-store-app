@@ -1,5 +1,14 @@
+import Navbar from "./components/Navbar.jsx";
+import Slider from "./components/Slider.jsx";
+import "./styles/App.css";
+
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <div>
+      <Navbar />
+      <Slider />
+    </div>
+  );
 }
 
 export default App;
