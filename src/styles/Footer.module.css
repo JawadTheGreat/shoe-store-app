@@ -1,0 +1,68 @@
+/* footer component */
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 4em 6em 4em 6em;
+  background-color: #f5f5f5;
+}
+
+.leftFooter {
+  display: flex;
+  justify-content: space-around;
+  flex: 2;
+}
+
+.fMenuTitle {
+  font-size: 1.5em;
+}
+
+.fListItem {
+  list-style: none;
+  margin: 1em 0;
+  color: gray;
+  cursor: pointer;
+}
+
+.rightFooter {
+  flex: 1;
+  padding: 0 0 0 10em;
+}
+
+.newsletterMail {
+  margin: 1em 0;
+}
+
+.newsletterMailInput {
+  width: 15em;
+  height: 2.5em;
+  padding: 5px;
+  margin-right: 3px;
+}
+
+.newsletterMailBtn {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5em;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+}
+
+.followusTitle {
+  margin-top: 1em;
+}
+
+.socialLinkIcon {
+  width: 1.5em;
+  margin: 1em 0.6em;
+  cursor: pointer;
+}
+
+.socialLinkIcon:nth-child(1) {
+  margin-left: 0;
+}
+
+.copyright {
+  color: gray;
+}
