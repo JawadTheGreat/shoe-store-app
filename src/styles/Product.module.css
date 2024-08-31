@@ -1,4 +1,4 @@
-/* product section component */
+/* product component */
 
 .product {
   height: 100vh;
@@ -213,4 +213,137 @@
   top: 0;
   right: 8px;
   cursor: pointer;
+}
+
+/* Hover will activate when user uses a mouse */
+@media (hover: hover) and (pointer: fine) {
+  .productButton:hover {
+    color: #fff;
+    background-color: #000;
+  }
+
+  .removeBtn:hover {
+    background-color: #ba0000;
+  }
+
+  .closeCartBtn:hover {
+    color: #ba0000;
+  }
+
+  .purchaseBtn:hover {
+    background-color: gray;
+    color: #fff;
+  }
+}
+
+/* styles for laptops  */
+@media only screen and (max-width: 1024px) {
+  .product {
+    padding: 1em 2em;
+  }
+
+  .purchaseBtn {
+    font-size: 1.5em;
+  }
+}
+
+/* styles for tablets  */
+@media only screen and (max-width: 768px) {
+  .product {
+    padding: 2em;
+  }
+
+  .productImg {
+    width: 40%;
+  }
+
+  .productDetails {
+    width: 50%;
+    font-size: 0.8em;
+  }
+
+  .size {
+    text-align: center;
+    height: auto;
+    width: auto;
+  }
+
+  .cartSection {
+    width: 80vw;
+  }
+}
+
+/* styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .product {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding: 4em auto;
+  }
+
+  .productImg {
+    width: 15em;
+  }
+
+  .productDetails {
+    width: 80%;
+  }
+
+  .productTitle {
+    font-size: 2em;
+  }
+
+  .productColor,
+  .productSizes {
+    justify-content: center;
+  }
+
+  .color,
+  .size {
+    margin: 0 1em;
+  }
+
+  .cartSectionHeader {
+    font-size: 1.8em;
+  }
+
+  .cartColumn {
+    font-size: 1.2em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cartItemImg {
+    width: 2.5em;
+  }
+
+  .cartItemTitle {
+    margin: 0;
+    font-size: 0.8em;
+  }
+
+  .cartItem {
+    width: 40%;
+  }
+
+  .cartQuantity {
+    flex-wrap: nowrap;
+    margin-right: 0;
+    width: 30%;
+  }
+
+  .cartQuantityInput {
+    width: 2em;
+  }
+
+  .removeBtn {
+    font-size: 0.5em;
+    margin-right: 1em;
+  }
+
+  .cartTotal {
+    font-size: 1.3em;
+    margin-left: 50%;
+  }
 }

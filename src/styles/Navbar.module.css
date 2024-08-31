@@ -24,6 +24,7 @@
   border-radius: 0.5em;
   width: 30vw;
 }
+
 .search-input {
   background-color: transparent;
   border: none;
@@ -34,10 +35,12 @@
 .search-input:focus {
   outline: none;
 }
+
 .search-input::placeholder {
   color: lightgray;
   font-size: 1.1em;
 }
+
 .search-icon {
   width: 1.5em;
   cursor: pointer;
@@ -48,14 +51,71 @@
   font-size: 1.7em;
   cursor: pointer;
 }
+
 .bottom-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 2em;
 }
+
 .nav-item {
   color: lightgray;
   margin-right: 4em;
   cursor: pointer;
+}
+
+/* styles for tablets  */
+@media only screen and (max-width: 768px) {
+  .nav-logo {
+    width: 7em;
+  }
+
+  .search {
+    width: 40vw;
+    padding: 0.5em 1em;
+  }
+
+  .search-icon {
+    width: 1em;
+  }
+
+  .nav-offer {
+    font-size: 1.3em;
+  }
+
+  .nav-item {
+    font-size: 1em;
+  }
+
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+}
+
+/* styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .main-nav {
+    padding: 1em;
+  }
+
+  .nav-logo {
+    width: 5em;
+  }
+
+  .nav-offer {
+    font-size: 1em;
+    width: 4em;
+    text-align: center;
+  }
+
+  .bottom-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5em;
+  }
+
+  .nav-item {
+    margin: 0.5em 1em;
+  }
 }

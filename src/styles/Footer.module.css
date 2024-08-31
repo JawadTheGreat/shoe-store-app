@@ -66,3 +66,105 @@
 .copyright {
   color: gray;
 }
+
+/* styles for laptops  */
+@media only screen and (max-width: 1024px) {
+  .footer {
+    padding: 2em;
+  }
+
+  .fMenuTitle {
+    font-size: 1.2em;
+  }
+
+  .fListItem {
+    font-size: 0.8em;
+    margin: 0.7em 0;
+  }
+
+  .rightFooter {
+    padding-left: 1em;
+  }
+
+  .newsletterTitle {
+    font-size: 1.3em;
+  }
+
+  .newsletterMailInput {
+    height: 2.1em;
+  }
+
+  .newsletterMail {
+    margin: 0.7em 0;
+  }
+
+  .newsletterMailBtn {
+    font-size: 0.8em;
+  }
+
+  .followusTitle {
+    margin-top: 0.9em;
+    font-size: 1.2em;
+  }
+
+  .socialLinkIcon {
+    width: 1.1em;
+    margin-top: 0.7em;
+  }
+}
+
+/* styles for tablets  */
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 2.5em 1.5em;
+  }
+
+  .fMenuTitle {
+    font-size: 1em;
+  }
+
+  .fListItem {
+    font-size: 0.7em;
+  }
+
+  .leftFooter {
+    flex: 1.7;
+  }
+
+  .newsletterTitle {
+    font-size: 1.1em;
+  }
+
+  .followusTitle {
+    font-size: 1.1em;
+  }
+
+  .socialLinkIcon {
+    width: 1em;
+  }
+
+  .copyright {
+    font-size: 0.7em;
+  }
+}
+
+/* styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .footerMenu {
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: center;
+  }
+
+  .rightFooter {
+    margin-top: 3em;
+    padding: 0;
+    text-align: center;
+  }
+}
