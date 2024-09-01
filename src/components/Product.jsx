@@ -1,5 +1,84 @@
 import classes from "../styles/Product.module.css";
 import airPng from "../assets/air.png";
+import Cart from "./Cart";
+
+const products = [
+  {
+    id: 1,
+    title: "Air Force",
+    price: 119.99,
+    colors: [
+      {
+        code: "black",
+        img: "../assets/air.png",
+      },
+      {
+        code: "darkblue",
+        img: "../assets/air2.png",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Air Jordan",
+    price: 149.99,
+    colors: [
+      {
+        code: "lightgray",
+        img: "../assets/jordan.png",
+      },
+      {
+        code: "green",
+        img: "../assets/jordan2.png",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Blazer",
+    price: 109.99,
+    colors: [
+      {
+        code: "lightgray",
+        img: "../assets/blazer.png",
+      },
+      {
+        code: "green",
+        img: "../assets/blazer2.png",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Crater",
+    price: 129.99,
+    colors: [
+      {
+        code: "black",
+        img: "../assets/crater.png",
+      },
+      {
+        code: "lightgray",
+        img: "../assets/crater2.png",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Hippie",
+    price: 99.99,
+    colors: [
+      {
+        code: "gray",
+        img: "../assets/hippie.png",
+      },
+      {
+        code: "black",
+        img: "../assets/hippie2.png",
+      },
+    ],
+  },
+];
 
 export default function Product() {
   return (
@@ -9,31 +88,7 @@ export default function Product() {
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
         <div className={classes["cartItemCounter"]}></div>
-        <div className={classes["cartSection"]}>
-          <div className={classes["closeCartBtn"]}>&times;</div>
-          <h1 className={classes["cartSectionHeader"]}>Your Cart</h1>
-          <div className={classes["cartItems"]}>
-            <div className={classes["cartRow"]}>
-              <div className={classes["cartColumn cartItem cartHeader"]}>
-                Item
-              </div>
-              <div className={classes["cartColumn cartPrice cartHeader"]}>
-                Price
-              </div>
-              <div className={classes["cartColumn cartQuantity cartHeader"]}>
-                Quantity
-              </div>
-            </div>
-          </div>
-
-          <div className={classes["cartTotal"]}>
-            <span className={classes["cartTotalTitle"]}>Total</span>
-            <span className={classes["cartTotalPrice"]}>$0</span>
-          </div>
-          <button type="button" className={classes["purchaseBtn"]}>
-            PURCHASE
-          </button>
-        </div>
+        <Cart />
         <img src={airPng} alt="" className={classes["productImg"]} />
         <div className={classes["productDetails"]}>
           <div className={classes["productTitle"]}>AIR FORCE</div>

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classes from "../styles/Slider.module.css";
 import air from "../assets/air.png";
 import jordan from "../assets/jordan.png";
@@ -5,11 +6,14 @@ import blazer from "../assets/blazer.png";
 import crater from "../assets/crater.png";
 import hippie from "../assets/hippie.png";
 
-export default function Slider() {
+export default function Slider({ currentIndex }) {
   return (
     <>
       <section className={classes["slider"]}>
-        <div className={classes["slider-Wrapper"]}>
+        <div
+          className={classes["slider-Wrapper"]}
+          style={{ transform: `translateX(${-100 * currentIndex}vw)` }}
+        >
           <div className={classes["slider-Item"]}>
             <img src={air} alt="" className={classes["slider-img"]} />
             <div className={classes["slider-Bg"]}></div>
@@ -90,3 +94,7 @@ export default function Slider() {
     </>
   );
 }
+
+Slider.propTypes = {
+  currentIndex: PropTypes.number.isRequired,
+};
