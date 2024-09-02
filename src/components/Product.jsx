@@ -1,6 +1,17 @@
+import PropTypes from "prop-types";
 import classes from "../styles/Product.module.css";
-import airPng from "../assets/air.png";
+import air from "../assets/air.png";
+import air2 from "../assets/air2.png";
+import jordan from "../assets/jordan.png";
+import jordan2 from "../assets/jordan2.png";
+import blazer from "../assets/blazer.png";
+import blazer2 from "../assets/blazer2.png";
+import crater from "../assets/crater.png";
+import crater2 from "../assets/crater2.png";
+import hippie from "../assets/hippie.png";
+import hippie2 from "../assets/hippie2.png";
 import Cart from "./Cart";
+import { useState } from "react";
 
 const products = [
   {
@@ -10,11 +21,11 @@ const products = [
     colors: [
       {
         code: "black",
-        img: "../assets/air.png",
+        img: air,
       },
       {
         code: "darkblue",
-        img: "../assets/air2.png",
+        img: air2,
       },
     ],
   },
@@ -25,11 +36,11 @@ const products = [
     colors: [
       {
         code: "lightgray",
-        img: "../assets/jordan.png",
+        img: jordan,
       },
       {
         code: "green",
-        img: "../assets/jordan2.png",
+        img: jordan2,
       },
     ],
   },
@@ -40,11 +51,11 @@ const products = [
     colors: [
       {
         code: "lightgray",
-        img: "../assets/blazer.png",
+        img: blazer,
       },
       {
         code: "green",
-        img: "../assets/blazer2.png",
+        img: blazer2,
       },
     ],
   },
@@ -55,11 +66,11 @@ const products = [
     colors: [
       {
         code: "black",
-        img: "../assets/crater.png",
+        img: crater,
       },
       {
         code: "lightgray",
-        img: "../assets/crater2.png",
+        img: crater2,
       },
     ],
   },
@@ -70,17 +81,42 @@ const products = [
     colors: [
       {
         code: "gray",
-        img: "../assets/hippie.png",
+        img: hippie,
       },
       {
         code: "black",
-        img: "../assets/hippie2.png",
+        img: hippie2,
       },
     ],
   },
 ];
 
-export default function Product() {
+export default function Product({ currentIndex }) {
+  const [colorIndex, setColorIndex] = useState(0); // State to track which color button is active (clicked)
+  const [activeSizeButton, setActiveSizeButton] = useState(null); // State to track which size button is active (clicked)
+
+  //change the choosen product
+  let choosenProduct = products[currentIndex];
+
+  //change the choosen product details
+  let currentProductImg = choosenProduct.colors[colorIndex].img;
+  let currentProductTitle = choosenProduct.title;
+  let currentProductPrice = choosenProduct.price;
+  let currentProductColors = choosenProduct.colors;
+
+  // Function to determine the size button color
+  const getSizeButtonStyle = (sizeButtonIndex) => {
+    return {
+      backgroundColor: activeSizeButton === sizeButtonIndex ? "black" : "white",
+      color: activeSizeButton === sizeButtonIndex ? "white" : "black",
+    };
+  };
+
+  // Function to handle size button click
+  const handleSizeButtonClick = (sizeButtonIndex) => {
+    setActiveSizeButton(sizeButtonIndex);
+  };
+
   return (
     <>
       <section className={classes["product"]} id="product">
@@ -89,10 +125,10 @@ export default function Product() {
         </div>
         <div className={classes["cartItemCounter"]}></div>
         <Cart />
-        <img src={airPng} alt="" className={classes["productImg"]} />
+        <img src={currentProductImg} alt="" className={classes["productImg"]} />
         <div className={classes["productDetails"]}>
-          <div className={classes["productTitle"]}>AIR FORCE</div>
-          <div className={classes["productPrice"]}>$119.99</div>
+          <div className={classes["productTitle"]}>{currentProductTitle}</div>
+          <div className={classes["productPrice"]}>${currentProductPrice}</div>
           <div className={classes["productDescription"]}>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo cum
             ducimus nobis quibusdam consequuntur nam eligendi aspernatur nihil
@@ -100,13 +136,37 @@ export default function Product() {
             Quos, in.
           </div>
           <div className={classes["productColor"]}>
-            <div className={classes["color"]}></div>
-            <div className={classes["color"]}></div>
+            {currentProductColors.map((color, index) => (
+              <div
+                className={classes["color"]}
+                style={{ backgroundColor: color.code }}
+                onClick={() => setColorIndex(index)}
+                key={index}
+              ></div>
+            ))}
           </div>
           <div className={classes["productSizes"]}>
-            <div className={classes["size"]}>42</div>
-            <div className={classes["size"]}>43</div>
-            <div className={classes["size"]}>44</div>
+            <div
+              className={classes["size"]}
+              style={getSizeButtonStyle(0)}
+              onClick={() => handleSizeButtonClick(0)}
+            >
+              42
+            </div>
+            <div
+              className={classes["size"]}
+              style={getSizeButtonStyle(1)}
+              onClick={() => handleSizeButtonClick(1)}
+            >
+              43
+            </div>
+            <div
+              className={classes["size"]}
+              style={getSizeButtonStyle(2)}
+              onClick={() => handleSizeButtonClick(2)}
+            >
+              44
+            </div>
           </div>
           <button className={classes["productButton"]}>Add To Cart</button>
         </div>
@@ -114,3 +174,7 @@ export default function Product() {
     </>
   );
 }
+
+Product.propTypes = {
+  currentIndex: PropTypes.number.isRequired,
+};
