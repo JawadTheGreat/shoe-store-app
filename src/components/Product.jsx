@@ -94,6 +94,7 @@ const products = [
 export default function Product({ currentIndex }) {
   const [colorIndex, setColorIndex] = useState(0); // State to track which color button is active (clicked)
   const [activeSizeButton, setActiveSizeButton] = useState(null); // State to track which size button is active (clicked)
+  const [cartButtonActive, setCartButtonActive] = useState(false);
 
   //change the choosen product
   let choosenProduct = products[currentIndex];
@@ -120,11 +121,17 @@ export default function Product({ currentIndex }) {
   return (
     <>
       <section className={classes["product"]} id="product">
-        <div className={classes["cartIcon"]}>
+        <div
+          className={classes["cartIcon"]}
+          onClick={() => setCartButtonActive(true)}
+        >
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
         <div className={classes["cartItemCounter"]}></div>
-        <Cart />
+        <Cart
+          cartButtonActive={cartButtonActive}
+          setCartButtonActive={setCartButtonActive}
+        />
         <img src={currentProductImg} alt="" className={classes["productImg"]} />
         <div className={classes["productDetails"]}>
           <div className={classes["productTitle"]}>{currentProductTitle}</div>

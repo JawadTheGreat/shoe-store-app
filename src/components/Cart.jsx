@@ -1,17 +1,34 @@
+import PropTypes from "prop-types";
 import classes from "../styles/Cart.module.css";
 
-export default function Cart() {
+export default function Cart({ cartButtonActive, setCartButtonActive }) {
   return (
-    <div className={classes["cartSection"]}>
-      <div className={classes["closeCartBtn"]}>&times;</div>
+    <div
+      className={classes["cartSection"]}
+      style={cartButtonActive ? { display: "flex" } : { display: "none" }}
+    >
+      <div
+        className={classes["closeCartBtn"]}
+        onClick={() => setCartButtonActive(false)}
+      >
+        &times;
+      </div>
       <h1 className={classes["cartSectionHeader"]}>Your Cart</h1>
       <div className={classes["cartItems"]}>
         <div className={classes["cartRow"]}>
-          <div className={classes["cartColumn cartItem cartHeader"]}>Item</div>
-          <div className={classes["cartColumn cartPrice cartHeader"]}>
+          <div
+            className={`${classes.cartColumn} ${classes.cartItem} ${classes.cartHeader}`}
+          >
+            Item
+          </div>
+          <div
+            className={`${classes.cartColumn} ${classes.cartPrice} ${classes.cartHeader}`}
+          >
             Price
           </div>
-          <div className={classes["cartColumn cartQuantity cartHeader"]}>
+          <div
+            className={`${classes.cartColumn} ${classes.cartQuantity} ${classes.cartHeader}`}
+          >
             Quantity
           </div>
         </div>
@@ -27,3 +44,8 @@ export default function Cart() {
     </div>
   );
 }
+
+Cart.propTypes = {
+  cartButtonActive: PropTypes.bool.isRequired,
+  setCartButtonActive: PropTypes.func.isRequired,
+};
