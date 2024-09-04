@@ -20,10 +20,12 @@ const products = [
     price: 119.99,
     colors: [
       {
+        id: 101,
         code: "black",
         img: air,
       },
       {
+        id: 102,
         code: "darkblue",
         img: air2,
       },
@@ -35,10 +37,12 @@ const products = [
     price: 149.99,
     colors: [
       {
+        id: 201,
         code: "lightgray",
         img: jordan,
       },
       {
+        id: 202,
         code: "green",
         img: jordan2,
       },
@@ -50,10 +54,12 @@ const products = [
     price: 109.99,
     colors: [
       {
+        id: 301,
         code: "lightgray",
         img: blazer,
       },
       {
+        id: 302,
         code: "green",
         img: blazer2,
       },
@@ -65,10 +71,12 @@ const products = [
     price: 129.99,
     colors: [
       {
+        id: 401,
         code: "black",
         img: crater,
       },
       {
+        id: 402,
         code: "lightgray",
         img: crater2,
       },
@@ -80,10 +88,12 @@ const products = [
     price: 99.99,
     colors: [
       {
+        id: 501,
         code: "gray",
         img: hippie,
       },
       {
+        id: 502,
         code: "black",
         img: hippie2,
       },
@@ -95,11 +105,12 @@ export default function Product({ currentIndex }) {
   const [colorIndex, setColorIndex] = useState(0); // State to track which color button is active (clicked)
   const [activeSizeButton, setActiveSizeButton] = useState(null); // State to track which size button is active (clicked)
   const [cartButtonActive, setCartButtonActive] = useState(false);
-
+  const [cart, setCart] = useState([]);
   //change the choosen product
   let choosenProduct = products[currentIndex];
 
   //change the choosen product details
+  let currentProductId = choosenProduct.colors[colorIndex].id;
   let currentProductImg = choosenProduct.colors[colorIndex].img;
   let currentProductTitle = choosenProduct.title;
   let currentProductPrice = choosenProduct.price;
@@ -118,6 +129,24 @@ export default function Product({ currentIndex }) {
     setActiveSizeButton(sizeButtonIndex);
   };
 
+  // function for maintaining cart data
+  function addToCart(img, title, price, id) {
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === id) {
+        alert("This item is already added.");
+        return;
+      }
+    }
+    let cartItem = {
+      id: id,
+      img: img,
+      title: title,
+      price: price,
+    };
+
+    setCart([...cart, cartItem]);
+  }
+
   return (
     <>
       <section className={classes["product"]} id="product">
@@ -131,6 +160,7 @@ export default function Product({ currentIndex }) {
         <Cart
           cartButtonActive={cartButtonActive}
           setCartButtonActive={setCartButtonActive}
+          cart={cart}
         />
         <img src={currentProductImg} alt="" className={classes["productImg"]} />
         <div className={classes["productDetails"]}>
@@ -175,7 +205,20 @@ export default function Product({ currentIndex }) {
               44
             </div>
           </div>
-          <button className={classes["productButton"]}>Add To Cart</button>
+          <button
+            className={classes["productButton"]}
+            onClick={() =>
+              addToCart(
+                currentProductImg,
+                currentProductTitle,
+                currentProductPrice,
+                currentProductId
+              )
+            }
+          >
+            Add To Cart
+          </button>
+          {console.log(cart)}
         </div>
       </section>
     </>
