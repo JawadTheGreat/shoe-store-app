@@ -141,10 +141,14 @@ export default function Product({ currentIndex }) {
       id: id,
       img: img,
       title: title,
-      price: price,
+      price: +price,
     };
 
     setCart([...cart, cartItem]);
+  }
+
+  function removeButtonClicked(id) {
+    setCart(cart.filter((item) => item.id !== id));
   }
 
   return (
@@ -156,11 +160,18 @@ export default function Product({ currentIndex }) {
         >
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
-        <div className={classes["cartItemCounter"]}></div>
+        <div
+          className={classes["cartItemCounter"]}
+          style={cart.length > 0 ? { display: "flex" } : { display: "none" }}
+        >
+          {cart.length}
+        </div>
         <Cart
           cartButtonActive={cartButtonActive}
           setCartButtonActive={setCartButtonActive}
           cart={cart}
+          removeButtonClicked={removeButtonClicked}
+          setCart={setCart}
         />
         <img src={currentProductImg} alt="" className={classes["productImg"]} />
         <div className={classes["productDetails"]}>
@@ -218,8 +229,8 @@ export default function Product({ currentIndex }) {
           >
             Add To Cart
           </button>
-          {console.log(cart)}
         </div>
+        {console.log(cart)}
       </section>
     </>
   );
