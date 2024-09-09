@@ -12,6 +12,7 @@ import hippie from "../assets/hippie.png";
 import hippie2 from "../assets/hippie2.png";
 import Cart from "./Cart";
 import { useState } from "react";
+import SizeButtons from "./SizeButtons";
 
 const products = [
   {
@@ -103,31 +104,17 @@ const products = [
 
 export default function Product({ currentIndex }) {
   const [colorIndex, setColorIndex] = useState(0); // State to track which color button is active (clicked)
-  const [activeSizeButton, setActiveSizeButton] = useState(null); // State to track which size button is active (clicked)
   const [cartButtonActive, setCartButtonActive] = useState(false);
   const [cart, setCart] = useState([]);
+
   //change the choosen product
   let choosenProduct = products[currentIndex];
-
   //change the choosen product details
   let currentProductId = choosenProduct.colors[colorIndex].id;
   let currentProductImg = choosenProduct.colors[colorIndex].img;
-  let currentProductTitle = choosenProduct.title;
+  let currentProductTitle = choosenProduct.title.toUpperCase();
   let currentProductPrice = choosenProduct.price;
   let currentProductColors = choosenProduct.colors;
-
-  // Function to determine the size button color
-  const getSizeButtonStyle = (sizeButtonIndex) => {
-    return {
-      backgroundColor: activeSizeButton === sizeButtonIndex ? "black" : "white",
-      color: activeSizeButton === sizeButtonIndex ? "white" : "black",
-    };
-  };
-
-  // Function to handle size button click
-  const handleSizeButtonClick = (sizeButtonIndex) => {
-    setActiveSizeButton(sizeButtonIndex);
-  };
 
   // function for maintaining cart data
   function addToCart(img, title, price, id) {
@@ -145,10 +132,6 @@ export default function Product({ currentIndex }) {
     };
 
     setCart([...cart, cartItem]);
-  }
-
-  function removeButtonClicked(id) {
-    setCart(cart.filter((item) => item.id !== id));
   }
 
   return (
@@ -170,7 +153,6 @@ export default function Product({ currentIndex }) {
           cartButtonActive={cartButtonActive}
           setCartButtonActive={setCartButtonActive}
           cart={cart}
-          removeButtonClicked={removeButtonClicked}
           setCart={setCart}
         />
         <img src={currentProductImg} alt="" className={classes["productImg"]} />
@@ -193,29 +175,7 @@ export default function Product({ currentIndex }) {
               ></div>
             ))}
           </div>
-          <div className={classes["productSizes"]}>
-            <div
-              className={classes["size"]}
-              style={getSizeButtonStyle(0)}
-              onClick={() => handleSizeButtonClick(0)}
-            >
-              42
-            </div>
-            <div
-              className={classes["size"]}
-              style={getSizeButtonStyle(1)}
-              onClick={() => handleSizeButtonClick(1)}
-            >
-              43
-            </div>
-            <div
-              className={classes["size"]}
-              style={getSizeButtonStyle(2)}
-              onClick={() => handleSizeButtonClick(2)}
-            >
-              44
-            </div>
-          </div>
+          <SizeButtons />
           <button
             className={classes["productButton"]}
             onClick={() =>
@@ -230,7 +190,6 @@ export default function Product({ currentIndex }) {
             Add To Cart
           </button>
         </div>
-        {console.log(cart)}
       </section>
     </>
   );

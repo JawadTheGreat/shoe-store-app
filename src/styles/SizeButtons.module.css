@@ -1,0 +1,35 @@
+/* Size Buttons Component */
+.productSizes {
+  margin: 25px 0;
+  display: flex;
+}
+
+.size {
+  height: 35px;
+  width: 40px;
+  font-size: 1.1em;
+  padding: 5px 8px;
+  margin-right: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* styles for tablets  */
+@media only screen and (max-width: 768px) {
+  .size {
+    text-align: center;
+    height: auto;
+    width: auto;
+  }
+}
+
+/* styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .productSizes {
+    justify-content: center;
+  }
+
+  .size {
+    margin: 0 1em;
+  }
+}

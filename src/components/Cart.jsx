@@ -6,7 +6,6 @@ export default function Cart({
   cartButtonActive,
   setCartButtonActive,
   cart,
-  removeButtonClicked,
   setCart,
 }) {
   const [cartQuantities, setCartQuantities] = useState({});
@@ -28,6 +27,10 @@ export default function Cart({
     !cart.length
       ? alert("Your cart is empty")
       : (setCart([]), alert("Thank you for your purchase"));
+  }
+
+  function removeButtonClicked(id) {
+    setCart(cart.filter((item) => item.id !== id));
   }
 
   return (
@@ -118,6 +121,5 @@ Cart.propTypes = {
   cartButtonActive: PropTypes.bool.isRequired,
   setCartButtonActive: PropTypes.func.isRequired,
   cart: PropTypes.array.isRequired,
-  removeButtonClicked: PropTypes.func.isRequired,
   setCart: PropTypes.func.isRequired,
 };
