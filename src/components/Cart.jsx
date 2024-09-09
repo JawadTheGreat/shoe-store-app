@@ -31,89 +31,89 @@ export default function Cart({
 
   function removeButtonClicked(id) {
     setCart(cart.filter((item) => item.id !== id));
+    setCartQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: 1,
+    }));
   }
 
   return (
-    <>
+    <div
+      className={classes["cartSection"]}
+      style={cartButtonActive ? { display: "flex" } : { display: "none" }}
+    >
       <div
-        className={classes["cartSection"]}
-        style={cartButtonActive ? { display: "flex" } : { display: "none" }}
+        className={classes["closeCartBtn"]}
+        onClick={() => setCartButtonActive(false)}
       >
-        <div
-          className={classes["closeCartBtn"]}
-          onClick={() => setCartButtonActive(false)}
-        >
-          &times;
+        &times;
+      </div>
+      <h1 className={classes["cartSectionHeader"]}>Your Cart</h1>
+      <div className={classes["cartItems"]}>
+        <div className={classes["cartRow"]}>
+          <div
+            className={`${classes.cartColumn} ${classes.cartItem} ${classes.cartHeader}`}
+          >
+            Item
+          </div>
+          <div
+            className={`${classes.cartColumn} ${classes.cartPrice} ${classes.cartHeader}`}
+          >
+            Price
+          </div>
+          <div
+            className={`${classes.cartColumn} ${classes.cartQuantity} ${classes.cartHeader}`}
+          >
+            Quantity
+          </div>
         </div>
-        <h1 className={classes["cartSectionHeader"]}>Your Cart</h1>
-        <div className={classes["cartItems"]}>
-          <div className={classes["cartRow"]}>
-            <div
-              className={`${classes.cartColumn} ${classes.cartItem} ${classes.cartHeader}`}
-            >
-              Item
+        {/* cart items will enter here */}
+        {cart.map((cartItem) => (
+          <div className={classes["cartRow"]} key={cartItem.id}>
+            <div className={`${classes.cartColumn} ${classes.cartItem}`}>
+              <img
+                src={cartItem.img}
+                alt=""
+                className={classes["cartItemImg"]}
+              />
+              <span className={classes["cartItemTitle"]}>{cartItem.title}</span>
             </div>
-            <div
-              className={`${classes.cartColumn} ${classes.cartPrice} ${classes.cartHeader}`}
-            >
-              Price
+            <div className={`${classes.cartColumn} ${classes.cartPrice}`}>
+              ${cartItem.price}
             </div>
-            <div
-              className={`${classes.cartColumn} ${classes.cartQuantity} ${classes.cartHeader}`}
-            >
-              Quantity
+            <div className={`${classes.cartColumn} ${classes.cartQuantity}`}>
+              <input
+                value={cartQuantities[cartItem.id] || 1}
+                type="number"
+                className={classes["cartQuantityInput"]}
+                onChange={(e) =>
+                  handleQuantityChange(cartItem.id, e.target.value)
+                }
+              />
+              <button
+                type="button"
+                className={classes["removeBtn"]}
+                onClick={() => removeButtonClicked(cartItem.id)}
+              >
+                REMOVE
+              </button>
             </div>
           </div>
-          {/* cart items */}
-          {cart.map((cartItem) => (
-            <div className={classes["cartRow"]} key={cartItem.id}>
-              <div className={`${classes.cartColumn} ${classes.cartItem}`}>
-                <img
-                  src={cartItem.img}
-                  alt=""
-                  className={classes["cartItemImg"]}
-                />
-                <span className={classes["cartItemTitle"]}>
-                  {cartItem.title}
-                </span>
-              </div>
-              <div className={`${classes.cartColumn} ${classes.cartPrice}`}>
-                ${cartItem.price}
-              </div>
-              <div className={`${classes.cartColumn} ${classes.cartQuantity}`}>
-                <input
-                  value={cartQuantities[cartItem.id] || 1}
-                  type="number"
-                  className={classes["cartQuantityInput"]}
-                  onChange={(e) =>
-                    handleQuantityChange(cartItem.id, e.target.value)
-                  }
-                />
-                <button
-                  type="button"
-                  className={classes["removeBtn"]}
-                  onClick={() => removeButtonClicked(cartItem.id)}
-                >
-                  REMOVE
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className={classes["cartTotal"]}>
-          <span className={classes["cartTotalTitle"]}>Total</span>
-          <span className={classes["cartTotalPrice"]}>${total}</span>
-        </div>
-        <button
-          type="button"
-          className={classes["purchaseBtn"]}
-          onClick={() => purchaseButtonClicked()}
-        >
-          PURCHASE
-        </button>
+        ))}
       </div>
-    </>
+
+      <div className={classes["cartTotal"]}>
+        <span className={classes["cartTotalTitle"]}>Total</span>
+        <span className={classes["cartTotalPrice"]}>${total}</span>
+      </div>
+      <button
+        type="button"
+        className={classes["purchaseBtn"]}
+        onClick={() => purchaseButtonClicked()}
+      >
+        PURCHASE
+      </button>
+    </div>
   );
 }
 
