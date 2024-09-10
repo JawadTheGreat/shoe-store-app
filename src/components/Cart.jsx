@@ -26,7 +26,9 @@ export default function Cart({
   function purchaseButtonClicked() {
     !cart.length
       ? alert("Your cart is empty")
-      : (setCart([]), alert("Thank you for your purchase"));
+      : (setCart([]),
+        setCartQuantities({}),
+        alert("Thank you for your purchase"));
   }
 
   function removeButtonClicked(id) {

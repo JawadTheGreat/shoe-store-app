@@ -18,6 +18,7 @@ export default function Navbar({ setCurrentIndex }) {
               type="text"
               placeholder="Search..."
               className={classes["search-input"]}
+              id="searchInput"
             />
             <img src={searchIcon} alt="" className={classes["search-icon"]} />
           </div>
@@ -40,5 +41,5 @@ export default function Navbar({ setCurrentIndex }) {
 }
 
 Navbar.propTypes = {
-  setCurrentIndex: PropTypes.any.isRequired,
+  setCurrentIndex: PropTypes.func.isRequired,
 };

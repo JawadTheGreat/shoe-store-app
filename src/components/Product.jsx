@@ -146,6 +146,7 @@ export default function Product({ currentIndex }) {
         <div
           className={classes["cartItemCounter"]}
           style={cart.length > 0 ? { display: "flex" } : { display: "none" }}
+          onClick={() => setCartButtonActive(true)}
         >
           {cart.length}
         </div>
