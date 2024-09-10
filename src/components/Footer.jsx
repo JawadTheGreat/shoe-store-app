@@ -50,6 +50,7 @@ export default function Footer() {
               type="email"
               placeholder="your@email.com"
               className={classes["newsletterMailInput"]}
+              id="newsletterMailInput"
             />
             <button className={classes["newsletterMailBtn"]}>Join!</button>
           </div>
